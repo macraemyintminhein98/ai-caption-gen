@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captiona AI - Instagram Caption Generator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+        main { flex-grow: 1; padding: 2rem 0; }
+        footer { padding: 1rem 0; text-align: center; font-size: 0.8em; color: #666; }
+    </style>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul><li><strong>Captiona AI</strong></li></ul>
+        <ul><li><a href="#">Pricing</a></li><li><a href="#">Login</a></li></ul>
+    </nav>
+    <main class="container">
+        <article>
+            <hgroup>
+                <h1>Generate Engaging Instagram Captions with AI</h1>
+                <h2>Never struggle with caption writing again.</h2>
+            </hgroup>
+            <form onsubmit="event.preventDefault(); generateCaption();">
+                <label for="keywords">Keywords/Themes (e.g., fitness, travel, food):</label>
+                <input type="text" id="keywords" name="keywords" placeholder="Enter keywords, separated by commas" required>
+                <label for="niche">Niche Area:</label>
+                <select id="niche" name="niche">
+                    <option value="general">General</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="food">Food</option>
+                    <option value="travel">Travel</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="business">Business</option>
+                </select>
+                <small>Select your post's niche for better results.</small>
+                <button type="submit" role="button">Generate Captions</button>
+            </form>
+            <section id="results" style="margin-top: 2rem;">
+                <h3>Your AI-Generated Captions:</h3>
+                <article id="caption-display" style="min-height: 100px; background-color: var(--pico-background-color); border: 1px solid var(--pico-color-gray-200); padding: 1rem; border-radius: var(--pico-border-radius); color: var(--pico-color-gray);">
+                    <!-- Captions will appear here -->
+                    <em>No captions generated yet.</em>
+                </article>
+            </section>
+        </article>
+    </main>
+    <footer class="container-fluid">
+        <p>&copy; 2023 Captiona AI. All rights reserved.</p>
+    </footer>
+    <script>
+        async function generateCaption() {
+            const keywords = document.getElementById('keywords').value;
+            const niche = document.getElementById('niche').value;
+            const captionDisplay = document.getElementById('caption-display');
+            captionDisplay.innerHTML = '<em>Generating...</em>';
+
+            // In a real app, this would be an API call to your backend
+            const mockCaptions = [
+                `Feeling ${keywords} today! Ready for an amazing ${niche} adventure. #${niche} #${keywords.split(',')[0] || 'inspiration'}`, 
+                `Discovering new horizons with a ${niche} twist. What's your favorite ${keywords.split(',')[0] || 'moment'}?`, 
+                `AI-powered inspiration for your ${niche} content. Let's make some magic!`
+            ];
+            
+            // Simulate API delay
+            setTimeout(() => {
+                captionDisplay.innerHTML = mockCaptions.map(cap => `<p>${cap}</p>`).join('');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
